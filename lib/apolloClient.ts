@@ -1,5 +1,7 @@
 // apolloClient.ts
 
+const URI = "http://localhost:5000/graphql";
+
 import {
     ApolloClient,
     InMemoryCache,
@@ -12,9 +14,9 @@ import {
   
   let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
   
-  function createApolloClient() {
+export function createApolloClient() {
     const httpLink = createHttpLink({
-      uri: 'Your GraphQL API endpoint', // Replace with your GraphQL API endpoint
+      uri: URI, // Replace with your GraphQL API endpoint
     });
   
     const authLink = setContext((_, { headers }) => {

@@ -1,8 +1,27 @@
-import React from 'react'
+import { gql } from "@apollo/client";
+import {createApolloClient} from '../lib/apolloClient';
 
-function Dashboard() {
+export async function getStaticProps() {
+  const client = createApolloClient();
+  const {data} = await client.query({query: gql`query myQuery {
+    books {
+    name
+    }
+  }`})
+
+  return {
+    props: {
+      books: data.books,
+    },
+  };
+}
+
+function Dashboard({books}:any) {
+  console.log(books)
+  
+
   return (
-    <div>Dashboard</div>
+    <div>Dashboard 1</div>
   )
 }
 
