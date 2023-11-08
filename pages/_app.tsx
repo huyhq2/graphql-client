@@ -1,17 +1,20 @@
-// _app.tsx
+import "bootstrap/dist/css/bootstrap.css";
 
-import { ApolloProvider } from '@apollo/client';
-import { useApollo } from '../lib/apolloClient';
-import type { AppProps } from 'next/app';
+import { ApolloProvider } from "@apollo/client";
+import { useApollo } from "../lib/apolloGraphql/apolloClient";
+import { AppProps } from "next/app";
 
-function MyApp({ Component, pageProps }: AppProps) {
+import Navbar from "./components/Navbar";
+
+const MyApp = ({ Component, pageProps }: AppProps) => {
   const apolloClient = useApollo(pageProps.initialApolloState);
 
   return (
     <ApolloProvider client={apolloClient}>
+      <Navbar />
       <Component {...pageProps} />
     </ApolloProvider>
   );
-}
+};
 
 export default MyApp;
