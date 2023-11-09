@@ -1,4 +1,4 @@
-import { BookInfo } from "../interface/book";
+import { BookInfo } from "../../interface/book";
 
 interface BookItemProps {
   book: BookInfo;

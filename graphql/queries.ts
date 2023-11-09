@@ -1,7 +1,7 @@
 import { gql } from "@apollo/client";
 
 export const BOOKS_QUERY = gql`
-  query books {
+  query {
     books {
       id
       name
@@ -14,7 +14,7 @@ export const BOOKS_QUERY = gql`
   }
 `;
 
-export const GET_BOOK_QUERY = gql`
+export const GET_BOOK_BY_ID_QUERY = gql`
   query getBook($bookId: ID!) {
     book(id: $bookId) {
       id
