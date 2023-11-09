@@ -1,9 +1,9 @@
-import Link from "next/link";
+import PageTitle from "@/components/PageTitle";
 
 const Home = () => {
   return (
     <main>
-      <h2>Dashboard</h2>
+      <PageTitle title="Introduce" />
     </main>
   );
 };
