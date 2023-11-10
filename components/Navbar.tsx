@@ -7,23 +7,19 @@ const Navbar = () => {
       <div className="flex items-center ">
         <Link
           href="/"
-          className="no-underline text-gray-500 hover:text-gray-600 font-bold w-20 text-center">
+          className="no-underline text-gray-500 hover:text-gray-600 font-bold px-3  text-center">
           Home
         </Link>
         <Link
           href="/books"
-          className="no-underline text-gray-500 hover:text-gray-600 font-bold w-20 text-center">
+          className="no-underline text-gray-500 hover:text-gray-600 font-bold px-3 text-center">
           Books
         </Link>
-        <div className="flex items-center">
-          <input
-            className="ml-2 outline-none bg-transparent font- border-gray-100"
-            type="text"
-            name="search"
-            id="search"
-            placeholder="Search..."
-          />
-        </div>
+        <Link
+          href="/books/add"
+          className="no-underline text-gray-500 hover:text-gray-600 font-bold px-3 text-center">
+          Management
+        </Link>
       </div>
     </nav>
   );

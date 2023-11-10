@@ -7,8 +7,6 @@ import { BookInfo } from "@/interface/book";
 import Loading from "@/components/Loading";
 import ErrorMessage from "@/components/ErrorMessage";
 
-export const dynamic = "force-dynamic";
-
 interface Response {
   books: BookInfo[];
 }
@@ -16,7 +14,14 @@ interface Response {
 const BookList = async () => {
   const { data, loading, error } = await getClient().query<Response>({
     query: BOOKS_QUERY,
+    context: {
+      fetchOptions: {
+        next: { revalidate: 0 },
+      },
+    },
   });
+
+  console.log(data);
 
   if (loading) return <Loading />;
   if (error) return <ErrorMessage message={error.message} />;
@@ -24,7 +29,7 @@ const BookList = async () => {
   return (
     <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
       {data.books?.map((book: BookInfo) => (
-        <div key={book.id} className="rounded overflow-hidden ">
+        <div key={book.id} className="rounded overflow-hidden">
           <Link href={`books/${book.id}`}>
             <BookItem book={book} />
           </Link>

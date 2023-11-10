@@ -21,11 +21,11 @@ const BookItem = ({ book }: BookItemProps) => {
       </div>
       <div className="relative h-56">
         <Image
-          objectFit="cover"
           fill
           alt={book.name}
           src={bookPhoto}
           placeholder="blur"
+          style={{ objectFit: "cover" }}
         />
       </div>
     </div>

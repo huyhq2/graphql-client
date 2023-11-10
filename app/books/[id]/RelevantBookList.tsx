@@ -1,6 +1,7 @@
 interface RelevantBookListProps {
   authorId: string;
 }
+
 //TODO: query data
 const RelevantBookList = ({ authorId }: RelevantBookListProps) => {
   console.log(authorId);

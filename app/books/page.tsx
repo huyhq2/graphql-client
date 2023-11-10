@@ -7,7 +7,7 @@ const Books = () => {
   return (
     <main>
       <div className="container">
-        <PageTitle title="Books"/>
+        <PageTitle title="Books" />
         <Suspense fallback={<Loading />}>
           <BookList />
         </Suspense>
