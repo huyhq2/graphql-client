@@ -5,5 +5,6 @@ export interface BookInfo {
   author: {
     id: string;
     name: string;
+    age: number;
   };
 }

@@ -4,22 +4,36 @@ import React from "react";
 import BookItem from "./BookItem";
 import Link from "next/link";
 import { BookInfo } from "@/interface/book";
-
-export const dynamic = "force-dynamic";
+import Loading from "@/components/Loading";
+import ErrorMessage from "@/components/ErrorMessage";
 
 interface Response {
   books: BookInfo[];
 }
 
 const BookList = async () => {
-  const data = await getClient().query<Response>({ query: BOOKS_QUERY });
-  console.log(data.data);
+  const { data, loading, error } = await getClient().query<Response>({
+    query: BOOKS_QUERY,
+    context: {
+      fetchOptions: {
+        next: { revalidate: 0 },
+      },
+    },
+  });
+
+  console.log(data);
+
+  if (loading) return <Loading />;
+  if (error) return <ErrorMessage message={error.message} />;
+
   return (
-    <div className="row">
-      {data.data.books?.map((book: BookInfo) => (
-        <Link key={book.id} className="col-3 g-2" href={`books/${book.id}`}>
-          <BookItem book={book} />
-        </Link>
+    <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+      {data.books?.map((book: BookInfo) => (
+        <div key={book.id} className="rounded overflow-hidden">
+          <Link href={`books/${book.id}`}>
+            <BookItem book={book} />
+          </Link>
+        </div>
       ))}
     </div>
   );

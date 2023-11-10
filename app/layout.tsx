@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "@/components/Navbar";
 import { ApolloWrapper } from "@/lib/apollo-provider";
+
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 //
@@ -23,7 +23,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <ApolloWrapper>
           <Navbar />
-          <div className="container">{children}</div>
+          <div className="bg-gray-100 page-container pt-16">
+            <div className="container mx-auto py-4">{children}</div>
+          </div>
         </ApolloWrapper>
       </body>
     </html>
